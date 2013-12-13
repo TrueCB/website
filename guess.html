@@ -1,0 +1,66 @@
+<html>
+  <head>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    </script>
+    <script type="text/javascript">
+        var numguesses=0;
+        function play(){
+            $("#tabs").tabs();
+            var guess = Math.floor(Math.random()*10)+1;
+            
+            //alert("my guess is " + guess);
+            $("#guess").click(function(){
+                             
+                              var val = $("#val").val();
+                              numguesses = numguesses +1;
+                              $ ("#guesses").text("You Have Made "+ numguesses +" Guesses.");
+                              if (val < 1 || val > 10){
+                              alert ("Can you not read? Numbers 1 to 10 only!!!");
+                              }
+                              else if (val == guess){
+                              alert ("You guessed correct,the answer was " + val);
+                              } else if(val < guess){
+                              alert("You guessed too low!");
+                              }else if(val >guess){
+                              alert("You guessed too high!");
+                              }
+                              });
+                              $("#reset").click(function(){
+                                                $ ("#guesses").text("");
+                                                $("#guess").unbind("click");
+                                                numguesses =0;
+                                                play();
+                                                
+                                                });
+                                                
+        }
+    $(document).ready(play);
+    </script>
+  </head>
+  <body>
+      <div id="tabs">
+          <ul>
+              <li><a href="#tabs-1">Guess a Number</a></li>
+              <li><a href="#tabs-2">Super Mario</a></li>
+              </ul>
+          <div id="tabs-1">
+    <h1>Try to guess the correct number</h1>
+    Guess a number between 1 and 10
+    <input type="text" id="val"/>
+    <input type="button" id="guess" value="Guess"/>
+    <div id = "guesses"></div>
+    <input type="button" id="reset" value="Reset"/>
+    </div>
+          <div id="tabs-2">
+
+          
+    
+    <div align="center"><object width="640" height="480"><param name="movie" value="http://www.embeddablegames.net/embedgames/superflashmariobros.swf"><param name="quality" value="high"><embed src="http://www.embeddablegames.net/embedgames/superflashmariobros.swf" quality="high" width="640" height="400" type="application/x-shockwave-flash" pluginspage= "http://www.macromedia.com/go/getflashplayer"></embed></object><br/><a href="http://www.knugo.com/games/Mario_Games"><strong>Mario by knugo.com</strong></a></div>
+    <p>
+    </div>
+
+    </div>
+  </body>
+</html>
